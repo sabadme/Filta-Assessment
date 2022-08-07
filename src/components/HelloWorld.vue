@@ -1,60 +1,68 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+    <v-row class="text-center" no-gutters>
+      <div class="bg-container">
+        <v-col cols="12" class="vertical-center">
+          <h1 class="display-3 font-weight-bold mb-3" v-animate-css="'swing'">
+            Hello Developer!
+          </h1>
+          <h4 class="subtitle" v-animate-css="'bounceInDown'">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h4>
+        </v-col>
+      </div>
+
+    <div class="card-container">
+      <div class="inner-container">
+        <div class="cards">
+          <img v-animate-css="'slideInRight'" src="../assets/img/1.png" />
+          <div :class="{ hide: !isShowA }" id="notShown">
+            <p class="card-txt" v-animate-css="'fadeInRight'">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <v-btn @click="isShowA = !isShowA" nelevation="2" outlined rounded x-large>Read More</v-btn>
+        </div>
+      
+        <div class="cards">
+          <img v-animate-css="'slideInUp'" src="../assets/img/2.png" />
+          <div :class="{ hide: isShowB }" id="notShown">
+            <p class="card-txt mb-0" v-animate-css="'fadeInUp'">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p><span class="invisible"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span></p>
+          </div>
+          <v-btn @click="isShowB = !isShowB" nelevation="2" outlined rounded x-large>Read More</v-btn>
+        </div>
+      
+        <div class="cards">
+          <img v-animate-css="'slideInLeft'" src="../assets/img/3.png" />
+          <div :class="{ hide: isShowC }" id="notShown">
+          <p  class="card-txt mb-0" v-animate-css="'fadeInLeft'">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+          <p><span class="invisible">laboris nisi ut aliquip ex ea.</span></p>
+          </div>
+          <v-btn @click="isShowC = !isShowC" nelevation="2" outlined rounded x-large>Read More</v-btn>
+        </div>
+      </div>
+    </div>
+
+    </v-row>
 </template>
+
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "ToggleDiv",
+  data: function () {
+    return {
+      isShowA: true,
+      isShowB: true,
+      isShowC: true,
+    };
+  },
+
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.notShown {
+  visibility: hidden !important;
 }
 </style>
